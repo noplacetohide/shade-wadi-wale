@@ -1,18 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Header from './components/Header'
+import About from './components/About'
+import Services from './components/Services'
+import Footer from './components/Footer'
+import Gallery from './components/Gallery'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <h1 class="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-
-    </>
+    <div className='flex flex-col w-full'>
+      <Header />
+      <div className='flex flex-col w-full'>
+        <About />
+        {/* Add additional sections here */}
+        <Services />
+        <Gallery />
+        <Footer />
+      </div>
+    </div>
   )
 }
 
