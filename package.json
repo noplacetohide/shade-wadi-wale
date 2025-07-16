@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.17",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.485.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-window": "^1.8.11",
     "tailwindcss": "^4.0.17"
   },
   "devDependencies": {
