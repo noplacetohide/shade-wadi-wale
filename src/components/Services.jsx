@@ -83,18 +83,32 @@ const Services = forwardRef((props, ref) => {
             {services.map((service, index) => (
               <div 
                 key={index} 
-                className='bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border-t-4 border-[#9b0e2b] group relative'
+                className='bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 border-t-4 border-[#9b0e2b] group relative transform hover:-translate-y-2'
               >
+                {/* Top border animation */}
                 <div className='absolute top-0 left-0 w-0 h-1 bg-[#FFD700] transition-all duration-500 group-hover:w-full'></div>
-                <div className='p-6'>
+                
+                {/* Left border animation */}
+                <div className='absolute top-0 left-0 w-1 h-0 bg-[#FFD700] transition-all duration-500 group-hover:h-full delay-100'></div>
+                
+                {/* Bottom border animation */}
+                <div className='absolute bottom-0 right-0 w-0 h-1 bg-[#FFD700] transition-all duration-500 group-hover:w-full'></div>
+                
+                {/* Right border animation */}
+                <div className='absolute top-0 right-0 w-1 h-0 bg-[#FFD700] transition-all duration-500 group-hover:h-full delay-100'></div>
+                
+                <div className='p-6 relative z-10'>
                   <div className='flex items-center gap-4 mb-4'>
-                    <div className='w-12 h-12 bg-[#9b0e2b] rounded-full flex items-center justify-center shadow-md text-xl'>
+                    <div className='w-12 h-12 bg-[#9b0e2b] rounded-full flex items-center justify-center shadow-md text-xl group-hover:scale-110 transition-transform duration-300'>
                       <span>{service.icon}</span>
                     </div>
-                    <h3 className='text-xl font-bold text-gray-800'>{service.title}</h3>
+                    <h3 className='text-xl font-bold text-gray-800 group-hover:text-[#9b0e2b] transition-colors duration-300'>{service.title}</h3>
                   </div>
-                  <p className='text-gray-600'>{service.description}</p>
+                  <p className='text-gray-600 group-hover:text-gray-800 transition-colors duration-300'>{service.description}</p>
                 </div>
+                
+                {/* Subtle background effect */}
+                <div className='absolute inset-0 bg-gradient-to-br from-[#9b0e2b]/0 to-[#FFD700]/0 group-hover:from-[#9b0e2b]/5 group-hover:to-[#FFD700]/5 transition-all duration-500'></div>
               </div>
             ))}
           </div>
@@ -113,7 +127,7 @@ const Services = forwardRef((props, ref) => {
                 {reasons.map((reason, index) => (
                   <div 
                     key={index} 
-                    className='bg-gradient-to-r from-[#9b0e2b]/5 to-[#FFD700]/5 p-6 rounded-lg text-center hover:shadow-md transition-shadow duration-300 border-l-2 border-[#9b0e2b]'
+                    className='bg-gradient-to-r from-[#9b0e2b]/5 to-[#FFD700]/5 p-6 rounded-lg text-center hover:shadow-md transition-all duration-500 border-l-2 border-[#9b0e2b] hover:border-l-4 hover:bg-gradient-to-r hover:from-[#9b0e2b]/10 hover:to-[#FFD700]/10 transform hover:-translate-y-1'
                   >
                     <div className='text-3xl mb-2'>{reason.icon}</div>
                     <p className='font-medium text-gray-800'>{reason.text}</p>
@@ -139,11 +153,11 @@ const Services = forwardRef((props, ref) => {
                       <div className='hidden md:block absolute top-8 -right-3 w-6 h-0.5 bg-[#FFD700]'></div>
                     )}
                     
-                    <div className='bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border-b-2 border-[#9b0e2b]'>
-                      <div className='w-10 h-10 bg-[#9b0e2b] rounded-full flex items-center justify-center text-white font-bold mx-auto mb-4'>
+                    <div className='bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-all duration-500 border-b-2 border-[#9b0e2b] hover:border-b-4 group transform hover:-translate-y-1'>
+                      <div className='w-10 h-10 bg-[#9b0e2b] rounded-full flex items-center justify-center text-white font-bold mx-auto mb-4 group-hover:scale-110 transition-transform duration-300'>
                         {index + 1}
                       </div>
-                      <p className='font-medium text-gray-800'>
+                      <p className='font-medium text-gray-800 group-hover:text-[#9b0e2b] transition-colors duration-300'>
                         {step.text}
                       </p>
                     </div>
@@ -152,7 +166,7 @@ const Services = forwardRef((props, ref) => {
               </div>
               
               <div className='mt-8'>
-                <a href="#Contact" className='bg-[#9b0e2b] hover:bg-[#9b0e2b]/90 text-white font-medium py-3 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-lg inline-block'>
+                <a href="#Contact" className='bg-[#9b0e2b] hover:bg-[#FFD700] text-white hover:text-gray-800 font-medium py-3 px-8 rounded-lg transition-all duration-500 shadow-md hover:shadow-lg inline-block transform hover:-translate-y-1'>
                   Get Started
                 </a>
               </div>
