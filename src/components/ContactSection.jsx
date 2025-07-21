@@ -1,5 +1,6 @@
 // ContactSection.jsx
 import React, { useState, forwardRef } from 'react';
+import { submitFormData } from './api'; // Add this import
 
 const ContactSection = forwardRef((props, ref) => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const ContactSection = forwardRef((props, ref) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const [submitStatus, setSubmitStatus] = useState(null); // Add this state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -62,6 +64,9 @@ const ContactSection = forwardRef((props, ref) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Reset status
+    setSubmitStatus(null);
+    
     // Validate form before submission
     if (!validateForm()) {
       return;
@@ -70,38 +75,30 @@ const ContactSection = forwardRef((props, ref) => {
     setIsSubmitting(true);
     
     try {
-      // Replace 'YOUR_SHEETDB_URL' with your actual SheetDB URL
-      const sheetdbUrl = 'https://sheetdb.io/api/v1/drt4u243kshhx';
+      // Use the API service instead of direct fetch
+      await submitFormData(formData);
       
-      const response = await fetch(sheetdbUrl, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          data: [formData]
-        })
+      // Show success message
+      setSubmitStatus({
+        type: 'success',
+        message: `Thank you ${formData.name}! Your request has been submitted successfully.`
       });
       
-      if (response.ok) {
-        // Show success message with the person's name
-        alert(`Thank you ${formData.name}! Your request has been submitted successfully.`);
-        
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          date: '',
-          additionalRequest: ''
-        });
-      } else {
-        throw new Error('Failed to submit form');
-      }
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        date: '',
+        additionalRequest: ''
+      });
+      
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('There was an error submitting your request. Please try again later.');
+      setSubmitStatus({
+        type: 'error',
+        message: 'There was an error submitting your request. Please try again later.'
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -121,6 +118,15 @@ const ContactSection = forwardRef((props, ref) => {
             Ready to make your special day perfect? Fill out the form below and our event planning experts will get back to you within 24 hours.
           </p>
         </div>
+        
+        {/* Add this block for status messages */}
+        {submitStatus && (
+          <div className={`max-w-3xl mx-auto mb-6 p-4 rounded-lg ${
+            submitStatus.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+          }`}>
+            {submitStatus.message}
+          </div>
+        )}
         
         <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="md:flex">
