@@ -73,7 +73,7 @@ const About = () => {
               <div className='space-y-4'>
                 <div className='rounded-lg overflow-hidden shadow-md h-64'>
                   <img 
-                    src="/haldi.jpg" 
+                    src="/haldi.webp" 
                     alt="Indian Wedding Ceremony" 
                     className='w-full h-full object-cover'
                     loading="lazy"
@@ -90,7 +90,7 @@ const About = () => {
                 
                 <div className='rounded-lg overflow-hidden shadow-md h-40'>
                   <img 
-                    src="/mehdi.jpg" 
+                    src="/mehdi.webp" 
                     alt="Wedding Decor" 
                     className='w-full h-full object-cover'
                     loading="lazy"
@@ -109,7 +109,7 @@ const About = () => {
               <div className='space-y-4 mt-8'>
                 <div className='rounded-lg overflow-hidden shadow-md h-40'>
                   <img 
-                    src="/sahera.jpg" 
+                    src="/sahera.webp" 
                     alt="Wedding Couple" 
                     className='w-full h-full object-cover'
                     loading="lazy"
@@ -126,7 +126,7 @@ const About = () => {
                 
                 <div className='rounded-lg overflow-hidden shadow-md h-64'>
                   <img 
-                    src="/rings.jpg" 
+                    src="/rings.webp" 
                     alt="Wedding Celebration" 
                     className='w-full h-full object-cover'
                     loading="lazy"

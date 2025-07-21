@@ -1,6 +1,6 @@
-import img_1 from './img_1.jpg';
-import img_2 from './img_2.jpg';
-import img_3 from './img_3.jpg';
+import img_1 from './img_1.wepb';
+import img_2 from './img_2.webp';
+import img_3 from './img_3.webp';
 
 export const assets = {
     img_1,

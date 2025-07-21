@@ -17,10 +17,10 @@ const ImagePreloader = ({ images }) => {
 const Header = ({ contactSectionRef, servicesSectionRef }) => {
   // Images for carousel
   const images = [
-    '/img_bg_1.jpg',
-    '/img_bg_2.jpg',
-    '/bg_5.jpg',
-    '/hands2.jpg'
+    '/img_bg_1.webp',
+    '/img_bg_2.webp',
+    '/bg_5.webp',
+    '/hands2.webp'
   ];
 
   const scrollToContact = () => {

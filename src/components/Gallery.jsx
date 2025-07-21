@@ -9,7 +9,7 @@ const Gallery = () => {
   const galleryImages = [
     {
       id: 1,
-      src: "/mehdi.jpg", 
+      src: "/mehdi.webp", 
       alt: "Traditional Wedding Ceremony",
       category: "ceremony",
       width: 600,
@@ -17,7 +17,7 @@ const Gallery = () => {
     },
     {
       id: 2,
-      src: "/bride.jpg",
+      src: "/bride.webp",
       alt: "Elegant Reception Decor",
       category: "decor",
       width: 600,
@@ -25,7 +25,7 @@ const Gallery = () => {
     },
     {
       id: 3,
-      src: "/img_1.jpg",
+      src: "/img_1.webp",
       alt: "Outdoor Wedding Setup",
       category: "venue",
       width: 600,
@@ -33,7 +33,7 @@ const Gallery = () => {
     },
     {
       id: 4,
-      src: "/img_2.jpg",
+      src: "/img_2.webp",
       alt: "Catering Arrangement",
       category: "catering",
       width: 600,
@@ -41,7 +41,7 @@ const Gallery = () => {
     },
     {
       id: 5,
-      src: "/img_3.jpg",
+      src: "/img_3.webp",
       alt: "Wedding Entertainment",
       category: "entertainment",
       width: 600,
@@ -49,7 +49,7 @@ const Gallery = () => {
     },
     {
       id: 6,
-      src: "/rings.jpg",
+      src: "/rings.webp",
       alt: "Themed Wedding Celebration",
       category: "theme",
       width: 600,
@@ -57,7 +57,7 @@ const Gallery = () => {
     },
     {
       id: 7,
-      src: "/hands2.jpg",
+      src: "/hands2.webp",
       alt: "Bridal Preparations",
       category: "ceremony",
       width: 600,
@@ -65,7 +65,7 @@ const Gallery = () => {
     },
     {
       id: 8,
-      src: "/img_bg_1.jpg",
+      src: "/img_bg_1.webp",
       alt: "Venue Lighting Setup",
       category: "decor",
       width: 600,
