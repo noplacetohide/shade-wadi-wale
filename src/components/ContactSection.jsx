@@ -1,5 +1,6 @@
 // ContactSection.jsx
 import React, { useState, forwardRef } from 'react';
+const sheetdbUrl = import.meta.env.VITE_SHEET_API_URL;
 
 const ContactSection = forwardRef((props, ref) => {
   const [formData, setFormData] = useState({
@@ -71,8 +72,6 @@ const ContactSection = forwardRef((props, ref) => {
     
     try {
       // Replace 'YOUR_SHEETDB_URL' with your actual SheetDB URL
-      const sheetdbUrl = 'https://sheetdb.io/api/v1/drt4u243kshhx';
-      
       const response = await fetch(sheetdbUrl, {
         method: 'POST',
         headers: {
