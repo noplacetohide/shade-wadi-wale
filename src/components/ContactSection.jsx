@@ -1,7 +1,5 @@
 // ContactSection.jsx
 import React, { useState, forwardRef } from 'react';
-import { submitFormData } from './api'; // Add this import
-import config from '../config';
 
 const ContactSection = forwardRef((props, ref) => {
   const [formData, setFormData] = useState({
@@ -13,7 +11,6 @@ const ContactSection = forwardRef((props, ref) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
-  const [submitStatus, setSubmitStatus] = useState(null); // Add this state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -73,21 +70,21 @@ const ContactSection = forwardRef((props, ref) => {
     setIsSubmitting(true);
     
     try {
-      // Use the URL from config
-      const googleScriptUrl = config.GOOGLE_SCRIPT_URL;
+      // Replace 'YOUR_SHEETDB_URL' with your actual SheetDB URL
+      const sheetdbUrl = 'https://sheetdb.io/api/v1/drt4u243kshhx';
       
-      const response = await fetch(googleScriptUrl, {
+      const response = await fetch(sheetdbUrl, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
         },
-        // Send formData directly (no need for data wrapper like SheetDB)
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          data: [formData]
+        })
       });
       
-      const result = await response.json();
-      
-      if (result.status === 'success') {
+      if (response.ok) {
         // Show success message with the person's name
         alert(`Thank you ${formData.name}! Your request has been submitted successfully.`);
         
@@ -100,7 +97,7 @@ const ContactSection = forwardRef((props, ref) => {
           additionalRequest: ''
         });
       } else {
-        throw new Error(result.message || 'Failed to submit form');
+        throw new Error('Failed to submit form');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -109,49 +106,6 @@ const ContactSection = forwardRef((props, ref) => {
       setIsSubmitting(false);
     }
   };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-    
-  //   // Reset status
-  //   setSubmitStatus(null);
-    
-  //   // Validate form before submission
-  //   if (!validateForm()) {
-  //     return;
-  //   }
-    
-  //   setIsSubmitting(true);
-    
-  //   try {
-  //     // Use the API service instead of direct fetch
-  //     await submitFormData(formData);
-      
-  //     // Show success message
-  //     setSubmitStatus({
-  //       type: 'success',
-  //       message: `Thank you ${formData.name}! Your request has been submitted successfully.`
-  //     });
-      
-  //     // Reset form
-  //     setFormData({
-  //       name: '',
-  //       email: '',
-  //       phone: '',
-  //       date: '',
-  //       additionalRequest: ''
-  //     });
-      
-  //   } catch (error) {
-  //     console.error('Error submitting form:', error);
-  //     setSubmitStatus({
-  //       type: 'error',
-  //       message: 'There was an error submitting your request. Please try again later.'
-  //     });
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // };
 
   return (
     <section 
@@ -167,15 +121,6 @@ const ContactSection = forwardRef((props, ref) => {
             Ready to make your special day perfect? Fill out the form below and our event planning experts will get back to you within 24 hours.
           </p>
         </div>
-        
-        {/* Add this block for status messages */}
-        {submitStatus && (
-          <div className={`max-w-3xl mx-auto mb-6 p-4 rounded-lg ${
-            submitStatus.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-          }`}>
-            {submitStatus.message}
-          </div>
-        )}
         
         <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="md:flex">
