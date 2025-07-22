@@ -1,10 +1,10 @@
 // src/services/api.js
 
 // Store the Apps Script URL in an environment variable for security
-const GOOGLE_SCRIPT_URL = process.env.REACT_APP_GOOGLE_SCRIPT_URL;
+const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
 
 // Add a secret key for additional security
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 /**
  * Submit form data to Google Sheets
@@ -28,7 +28,7 @@ export const submitFormData = async (formData) => {
     
     const data = await response.json();
     
-    if (!data.success) {
+    if (data.status !== 'success') {
       throw new Error(data.message || 'Failed to submit form');
     }
     
