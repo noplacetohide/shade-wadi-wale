@@ -7,15 +7,5 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-  ],
-  // server: {
-  //   proxy: {
-  //     '/api': {
-  //       target: 'https://script.google.com/macros/s/AKfycbzW1oezrYcdqujNQZQMvuheeIIcS_Tk5QOgylc4yWaD6TY2HFFMzXEmd2nXYSpxfQHC',
-  //       changeOrigin: true,
-  //       rewrite: (path) => path.replace(/^\/api/, '/exec'),
-  //       secure: true,
-  //     }
-  //   }
-  // }
+  ]
 })
